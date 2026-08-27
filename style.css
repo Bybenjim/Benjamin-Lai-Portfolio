@@ -255,6 +255,76 @@ section { padding: 96px 0; }
   font-size: 0.92rem;
 }
 
+/* Experience */
+.experience { border-bottom: 1px solid var(--border); }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.timeline-years {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.timeline-body h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.timeline-body h3 span {
+  font-weight: 400;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.timeline-body p {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+  max-width: 68ch;
+}
+
+.timeline-body strong {
+  color: var(--fg);
+}
+
+@media (max-width: 640px) {
+  .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* Case badge on work cards */
+.case-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.68rem;
+  background: rgba(217, 255, 75, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(217, 255, 75, 0.35);
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.case-badge:hover { background: rgba(217, 255, 75, 0.28); }
+
 /* About */
 .about { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 

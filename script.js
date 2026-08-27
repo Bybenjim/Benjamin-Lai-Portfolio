@@ -6,6 +6,12 @@ document.querySelectorAll('.work-card').forEach((card) => {
   card.addEventListener('click', () => loadVideo(card), { once: true });
 });
 
+// The Jaguar card carries a link back to the Experience section; don't let
+// that click also trigger the card's own click-to-play handler.
+document.querySelectorAll('.case-badge').forEach((badge) => {
+  badge.addEventListener('click', (e) => e.stopPropagation());
+});
+
 function loadVideo(card) {
   const id = card.dataset.id;
   card.innerHTML = `<iframe
