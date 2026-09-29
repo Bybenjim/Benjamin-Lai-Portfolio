@@ -18,7 +18,7 @@ badge_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
 margin = 80
 
 # Badges
-badges = ["SINGAPORE", "VIDEO PRODUCER", "SOCIAL MEDIA STRATEGIST"]
+badges = ["SINGAPORE", "VIDEO PRODUCTION", "VIDEO EDITING"]
 bx = margin
 by = 90
 for b in badges:
@@ -30,7 +30,7 @@ for b in badges:
     bx += tw + pad_x * 2 + 14
 
 # Headline
-lines = ["Turning attention into", "revenue for brands across", "Singapore & Southeast Asia."]
+lines = ["Quality Video Production", "in Singapore"]
 ty = 190
 for line in lines:
     draw.text((margin, ty), line, font=bold_big, fill=FG)
@@ -40,7 +40,7 @@ for line in lines:
 draw.text((margin, ty + 30), "Benjamin Lai", font=bold_small, fill=ACCENT)
 bbox = draw.textbbox((0, 0), "Benjamin Lai", font=bold_small)
 name_w = bbox[2] - bbox[0]
-draw.text((margin + name_w + 20, ty + 34), "· ByBenJim", font=regular, fill=MUTED)
+draw.text((margin + name_w + 20, ty + 34), "· Bybenjim", font=regular, fill=MUTED)
 
 img.save("/home/claude/portfolio-site/og-image.png")
 print("saved")

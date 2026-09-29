@@ -1,22 +1,25 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Work cards are rendered statically in index.html for SEO/crawlability.
-// This just adds click-to-play behaviour on top of the existing markup.
+// Work cards are rendered statically in index.html for SEO/crawlability, and
+// the YouTube player only loads on interaction so the initial page load stays
+// light. Cards are keyboard-operable (role="button", tabindex="0").
 document.querySelectorAll('.work-card').forEach((card) => {
   card.addEventListener('click', () => loadVideo(card), { once: true });
-});
-
-// The Jaguar card carries a link back to the Experience section; don't let
-// that click also trigger the card's own click-to-play handler.
-document.querySelectorAll('.case-badge').forEach((badge) => {
-  badge.addEventListener('click', (e) => e.stopPropagation());
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      loadVideo(card);
+    }
+  });
 });
 
 function loadVideo(card) {
+  if (card.querySelector('iframe')) return; // already loaded (click + keyboard both fired)
   const id = card.dataset.id;
+  const title = card.getAttribute('aria-label') || 'YouTube video player';
   card.innerHTML = `<iframe
       src="https://www.youtube.com/embed/${id}?autoplay=1"
-      title="YouTube video player"
+      title="${title}"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>`;
